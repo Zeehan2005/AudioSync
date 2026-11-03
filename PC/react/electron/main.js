@@ -514,6 +514,12 @@ ipcMain.handle('bluetooth-start', async () => {
                             });
                         }
                     }
+
+                    // Forward structured SMTC / AVRCP events ({"type":..., "data":...})
+                    // emitted by smtc_control.py to the renderer.
+                    if (msg.type && mainWindow && !mainWindow.isDestroyed()) {
+                        mainWindow.webContents.send('from-python', msg);
+                    }
                 } catch (e) {
                     // Non-JSON output, ignore
                 }

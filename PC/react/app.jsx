@@ -983,6 +983,23 @@ const App = () => {
                 const isMuted = msg.data;
                 showToast(isMuted ? "Audio Muted" : "Audio Unmuted", 'volume', 2000, isMuted ? 'muted' : 'unmuted');
                 break;
+            case 'smtc_ready':
+                showToast(`Media controls linked (${msg.data?.device || 'Bluetooth'})`, 'bluetooth', 2500);
+                break;
+            case 'smtc_status':
+                // Playback state reflected from AVRCP / SMTC (e.g. phone play/pause).
+                // Surfaced subtly; no intrusive toast.
+                break;
+            case 'avrcp_command':
+                {
+                    const c = msg.data?.command || '';
+                    const labelMap = { play: 'Play', pause: 'Pause', stop: 'Stop', next: 'Next', previous: 'Previous', toggle: 'Play/Pause' };
+                    showToast(`AVRCP: ${labelMap[c] || c}`, 'bluetooth', 1500);
+                }
+                break;
+            case 'smtc_error':
+                console.warn('[SMTC/AVRCP]', msg.data?.error);
+                break;
             default:
                 break;
         }

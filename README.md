@@ -37,6 +37,7 @@ AudioSync is an open-source project that lets you use your phone as a wireless a
   - Customizable audio buffer for latency tuning
   - Global keyboard shortcuts for volume control
   - Auto-updates with delta downloads
+  - 🔵 **Bluetooth AVRCP + Windows SMTC** - phone media buttons & PC media keys control playback, with a "Now playing" card (Bluetooth mode)
 
 - **Android Sender:**
   - Stream system audio (Android 10+)
@@ -145,6 +146,22 @@ Makes your PC act as a Bluetooth speaker. Your phone sends audio directly via Bl
 - **Latency:** ~0-20ms
 - **Requirements:** Bluetooth on both devices, `winsdk` and `pyaudio` Python packages
 - **No Android app needed** - just pair and play!
+- **AVRCP + System Media Transport Controls (SMTC):** When the PC is the A2DP sink,
+  AudioSync also registers with Windows **SMTC** so that:
+  - A **"Now playing"** card appears in the Windows Action Center / lock screen showing
+    AudioSync as the player.
+  - **AVRCP** commands from your phone (play / pause / next / previous / stop, sent from
+    the handset's media buttons) and your PC's own **media keys** are delivered to
+    AudioSync through SMTC and reflected back to the phone, keeping the play/pause state
+    in sync on both sides.
+  - Implementation: `PC/pc_receiver/smtc_control.py` (WinRT
+    `Windows.Media.SystemMediaTransportControls`) wired into
+    `PC/pc_receiver/bluetooth_receiver.py`.
+  - Note: volume is still handled by the phone over AVRCP absolute-volume and applied by
+    Windows to the Bluetooth endpoint directly. Audio muting on *pause* is currently
+    limited by the experimental A2DP-sink audio path; the SMTC playback state is always
+    kept in sync.
+
 
 ---
 
