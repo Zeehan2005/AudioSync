@@ -51,3 +51,5 @@ PC/react/firebase-config.js
 
 # Local build output (electron-builder alt output)
 dist-installer/
+dist-pkg/
+dist-final/

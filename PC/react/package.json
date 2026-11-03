@@ -44,7 +44,8 @@
     ],
     "win": {
       "target": "nsis",
-      "icon": "assets/images/icon.png"
+      "icon": "assets/images/icon.png",
+      "sign": "./scripts/emptySign.js"
     },
     "nsis": {
       "oneClick": false,
