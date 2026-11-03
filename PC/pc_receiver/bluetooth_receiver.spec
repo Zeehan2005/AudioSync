@@ -7,7 +7,7 @@ a = Analysis(
     pathex=[],
     binaries=[],
     datas=[],
-    hiddenimports=['winsdk', 'winsdk.windows.devices.enumeration', 'winsdk.windows.media.audio', 'winsdk.windows.media', 'winsdk.windows.media.playback', 'winsdk.windows.foundation'],
+    hiddenimports=['winsdk', 'winsdk.windows.devices.enumeration', 'winsdk.windows.media.audio', 'winsdk.windows.media', 'winsdk.windows.media.playback', 'winsdk.windows.foundation', 'comtypes', 'pycaw', 'cryptography'],
     hookspath=[],
     hooksconfig={},
     runtime_hooks=[],
@@ -40,5 +40,5 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
-    icon='../../assets/pytryicon.ico',
+    icon='../react/assets/images/favicon.ico',
 )

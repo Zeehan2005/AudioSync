@@ -2,3 +2,4 @@ pyaudio
 pycaw
 comtypes
 winsdk
+cryptography

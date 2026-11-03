@@ -48,3 +48,6 @@ PC/react/firebase-config.js
 # Gradle
 .gradle/
 
+
+# Local build output (electron-builder alt output)
+dist-installer/

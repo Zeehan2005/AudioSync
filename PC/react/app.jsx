@@ -297,7 +297,6 @@ const App = () => {
             idle: "Idle",
             rec: "Rec:",
             lost: "Lost:",
-            bluetoothExp: "Bluetooth A2DP (Experimental)",
             // Support
             supportTitle: "Support AudioSync",
             chooseMethod: "Choose Method",
